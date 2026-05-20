@@ -11,7 +11,7 @@ import {
   FiBell,
 } from "react-icons/fi"
 
-import { NavLink } from "react-router-dom"
+import { NavLink, useNavigate } from "react-router-dom"
 
 const navClass = ({ isActive }: any) =>
   `flex items-center gap-3 px-3 py-2 rounded-xl text-[14px] font-medium transition
@@ -22,6 +22,20 @@ const navClass = ({ isActive }: any) =>
    }`
 
 export default function Sidebar() {
+
+  const navigate = useNavigate()
+
+  const handleProfileClick = () => {
+
+    const user = localStorage.getItem("school_user")
+
+    if (user) {
+      navigate("/profile")
+    } else {
+      navigate("/login")
+    }
+  }
+
   return (
     <aside className="w-[174px] bg-white border-r border-slate-200 flex flex-col justify-between">
 
@@ -137,23 +151,27 @@ export default function Sidebar() {
         </div>
       </div>
 
-      {/* PROFILE */}
+      {/* PROFILE CARD */}
       <div className="p-2">
-        <div className="border rounded-2xl p-2 flex items-center gap-2">
+        <button
+          onClick={handleProfileClick}
+          className="w-full border rounded-2xl p-2 flex items-center gap-2 hover:border-[#0b8ca1] transition"
+        >
+
           <div className="h-8 w-8 rounded-full bg-orange-200 flex items-center justify-center text-[12px] font-bold">
-            RA
+            Admin
           </div>
 
-          <div>
+          <div className="text-left">
             <h4 className="text-[12px] font-semibold">
-              Rana Admin
+               Admin
             </h4>
 
             <p className="text-[10px] text-slate-400">
               Principal
             </p>
           </div>
-        </div>
+        </button>
       </div>
     </aside>
   )

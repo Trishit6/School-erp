@@ -15,66 +15,34 @@ import Announcements from "./routes/Announcements"
 
 import Login from "./features/auth/Login"
 import Register from "./features/auth/Register"
+import Profile from "./features/auth/Profile"
 
 function App() {
   return (
     <Routes>
-      {/* Auth Pages */}
+
+      {/* AUTH */}
       <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
 
-      <Route
-        path="/register"
-        element={<Register />}
-      />
-
-      {/* Dashboard Layout */}
+      {/* DASHBOARD */}
       <Route element={<Layout />}>
-        <Route index element={<Dashboard />} />
 
-        <Route
-          path="/students"
-          element={<Students />}
-        />
+        <Route path="/" element={<Dashboard />} />
 
-        <Route
-          path="/teachers"
-          element={<Teachers />}
-        />
+        <Route path="/students" element={<Students />} />
+        <Route path="/teachers" element={<Teachers />} />
+        <Route path="/classes" element={<Classes />} />
+        <Route path="/attendance" element={<Attendance />} />
+        <Route path="/timetable" element={<Timetable />} />
+        <Route path="/exams" element={<Exams />} />
+        <Route path="/grades" element={<Grades />} />
+        <Route path="/fees" element={<Fees />} />
+        <Route path="/announcements" element={<Announcements />} />
 
-        <Route
-          path="/classes"
-          element={<Classes />}
-        />
+        {/* PROFILE */}
+        <Route path="/profile" element={<Profile />} />
 
-        <Route
-          path="/attendance"
-          element={<Attendance />}
-        />
-
-        <Route
-          path="/timetable"
-          element={<Timetable />}
-        />
-
-        <Route
-          path="/exams"
-          element={<Exams />}
-        />
-
-        <Route
-          path="/grades"
-          element={<Grades />}
-        />
-
-        <Route
-          path="/fees"
-          element={<Fees />}
-        />
-
-        <Route
-          path="/announcements"
-          element={<Announcements />}
-        />
       </Route>
     </Routes>
   )

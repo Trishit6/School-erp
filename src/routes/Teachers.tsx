@@ -1,83 +1,165 @@
+import {
+  FiPlus,
+  FiMail,
+} from "react-icons/fi"
+
 const teachers = [
   {
     name: "Dr. Helen Park",
     subject: "Mathematics",
-    classes: "5 classes",
-    year: "Since 2017",
     email: "h.park@school.edu",
+    classes: "5 classes",
+    since: "Since 2017",
+    initial: "P",
   },
   {
     name: "Mr. Samuel Doyle",
     subject: "Physics",
-    classes: "4 classes",
-    year: "Since 2015",
     email: "s.doyle@school.edu",
+    classes: "4 classes",
+    since: "Since 2015",
+    initial: "D",
   },
   {
     name: "Ms. Farah Idris",
     subject: "English Literature",
-    classes: "6 classes",
-    year: "Since 2019",
     email: "f.idris@school.edu",
+    classes: "6 classes",
+    since: "Since 2019",
+    initial: "I",
+  },
+  {
+    name: "Mr. Kenji Sato",
+    subject: "History",
+    email: "k.sato@school.edu",
+    classes: "3 classes",
+    since: "Since 2012",
+    initial: "S",
+  },
+  {
+    name: "Ms. Camila Rosa",
+    subject: "Biology",
+    email: "c.rosa@school.edu",
+    classes: "4 classes",
+    since: "Since 2020",
+    initial: "R",
+  },
+  {
+    name: "Mr. Adam Levi",
+    subject: "Computer Science",
+    email: "a.levi@school.edu",
+    classes: "5 classes",
+    since: "Since 2021",
+    initial: "L",
   },
 ]
 
 export default function Teachers() {
   return (
-    <div className="space-y-6">
-      <div className="flex items-center justify-between">
+    <div className="min-h-screen bg-[#f6f8fb]">
+
+      {/* HEADER */}
+      <div className="flex items-start justify-between px-5 py-5 border-b border-slate-200 bg-white">
+
         <div>
-          <span className="rounded-full bg-cyan-100 px-3 py-1 text-xs font-semibold text-cyan-700">
-            PEOPLE
+          <span className="px-3 py-1 rounded-full bg-[#dff4f7] text-[#0b8ca1] text-[10px] font-bold uppercase tracking-wide">
+            People
           </span>
 
-          <h1 className="mt-3 text-5xl font-bold text-slate-900">
+          <h1 className="mt-3 text-[28px] font-bold text-slate-900 leading-none">
             Teachers
           </h1>
 
-          <p className="mt-2 text-slate-500">
+          <p className="mt-2 text-[14px] text-slate-500">
             Faculty directory and class assignments.
           </p>
         </div>
 
-        <button className="rounded-2xl bg-cyan-700 px-6 py-3 font-semibold text-white">
-          + Add teacher
+        <button className="h-[46px] px-5 rounded-2xl bg-[#0b8ca1] text-white text-[14px] font-semibold flex items-center gap-2 hover:bg-[#09798b] transition">
+          <FiPlus size={16} />
+          Add teacher
         </button>
       </div>
 
-      <div className="grid grid-cols-3 gap-6">
+      {/* GRID */}
+      <div className="p-5 grid grid-cols-3 gap-4">
+
         {teachers.map((teacher) => (
           <div
             key={teacher.email}
-            className="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm"
+            className="
+              bg-white
+              rounded-[24px]
+              overflow-hidden
+              border
+              border-slate-200
+              shadow-sm
+            "
           >
-            <div className="h-28 bg-gradient-to-r from-cyan-700 to-orange-300" />
 
-            <div className="p-6">
-              <div className="-mt-16 mb-6 flex h-20 w-20 items-center justify-center rounded-3xl bg-white text-3xl font-bold text-cyan-700 shadow">
-                {teacher.name.charAt(0)}
+            {/* TOP */}
+            <div className="h-[92px] bg-gradient-to-r from-[#007d94] via-[#8f9b82] to-[#f2ab57] relative">
+
+              {/* AVATAR */}
+              <div className="
+                absolute
+                left-4
+                bottom-[-18px]
+                h-[54px]
+                w-[54px]
+                rounded-[18px]
+                bg-[#f8fafc]
+                border
+                border-slate-200
+                shadow-sm
+                flex
+                items-center
+                justify-center
+                text-[#007d94]
+                text-[24px]
+                font-bold
+              ">
+                {teacher.initial}
               </div>
+            </div>
 
-              <h2 className="text-3xl font-bold text-slate-900">
+            {/* CONTENT */}
+            <div className="px-4 pt-8 pb-4">
+
+              <h2 className="text-[17px] font-bold text-slate-900">
                 {teacher.name}
               </h2>
 
-              <p className="mt-2 text-lg text-slate-500">
+              <p className="mt-1 text-[14px] text-slate-500">
                 {teacher.subject}
               </p>
 
-              <div className="mt-5 flex gap-3">
-                <span className="rounded-full border px-4 py-1 text-sm">
+              {/* TAGS */}
+              <div className="flex gap-2 mt-4">
+
+                <span className="h-[26px] px-3 rounded-full border border-slate-300 flex items-center text-[12px] font-medium text-slate-700">
                   {teacher.classes}
                 </span>
 
-                <span className="rounded-full border px-4 py-1 text-sm">
-                  {teacher.year}
+                <span className="h-[26px] px-3 rounded-full border border-slate-300 flex items-center text-[12px] font-medium text-slate-700">
+                  {teacher.since}
                 </span>
               </div>
 
-              <div className="mt-6 border-t pt-5 text-slate-500">
-                {teacher.email}
+              {/* LINE */}
+              <div className="h-[1px] bg-slate-200 my-4" />
+
+              {/* FOOTER */}
+              <div className="flex items-center justify-between">
+
+                <div className="flex items-center gap-2 text-slate-500 text-[13px]">
+                  <FiMail size={14} />
+                  {teacher.email}
+                </div>
+
+                <button className="text-[12px] font-semibold text-slate-700 hover:text-[#0b8ca1]">
+                  View
+                </button>
               </div>
             </div>
           </div>

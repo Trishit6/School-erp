@@ -1,101 +1,210 @@
+import {
+  FiSearch,
+  FiFilter,
+  FiDownload,
+  FiPlus,
+} from "react-icons/fi"
+
+const students = [
+  {
+    name: "Aisha Khan",
+    id: "S-1042",
+    grade: "10-A",
+    guardian: "Rehan Khan",
+    attendance: 96,
+    gpa: 3.8,
+    status: "Active",
+    initials: "AK",
+  },
+  {
+    name: "Liam Carter",
+    id: "S-1043",
+    grade: "9-B",
+    guardian: "Sara Carter",
+    attendance: 88,
+    gpa: 3.4,
+    status: "Active",
+    initials: "LC",
+  },
+  {
+    name: "Mei Tanaka",
+    id: "S-1044",
+    grade: "11-A",
+    guardian: "Hiro Tanaka",
+    attendance: 99,
+    gpa: 3.9,
+    status: "Active",
+    initials: "MT",
+  },
+  {
+    name: "Diego Alvarez",
+    id: "S-1045",
+    grade: "8-C",
+    guardian: "Lucia Alvarez",
+    attendance: 74,
+    gpa: 2.9,
+    status: "On Leave",
+    initials: "DA",
+  },
+  {
+    name: "Noah Becker",
+    id: "S-1046",
+    grade: "12-A",
+    guardian: "Klaus Becker",
+    attendance: 91,
+    gpa: 3.6,
+    status: "Active",
+    initials: "NB",
+  },
+]
+
 export default function Students() {
-  const students = [
-    {
-      name: "Aisha Khan",
-      id: "S-1042",
-      grade: "10-A",
-      guardian: "Rehan Khan",
-      attendance: "96%",
-      gpa: "3.8",
-      status: "Active",
-    },
-    {
-      name: "Liam Carter",
-      id: "S-1043",
-      grade: "9-B",
-      guardian: "Sara Carter",
-      attendance: "88%",
-      gpa: "3.4",
-      status: "Active",
-    },
-    {
-      name: "Mei Tanaka",
-      id: "S-1044",
-      grade: "11-A",
-      guardian: "Hiro Tanaka",
-      attendance: "99%",
-      gpa: "3.9",
-      status: "Active",
-    },
-  ]
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center justify-between">
+
+      {/* HEADER */}
+      <div className="flex items-start justify-between">
+
         <div>
-          <span className="rounded-full bg-cyan-100 px-3 py-1 text-xs font-semibold text-cyan-700">
-            PEOPLE
+          <span className="rounded-full bg-cyan-100 px-3 py-1 text-[11px] font-semibold uppercase tracking-wide text-cyan-700">
+            People
           </span>
 
-          <h1 className="mt-3 text-5xl font-bold text-slate-900">
+          <h1 className="mt-3 text-4xl font-bold text-slate-900">
             Students
           </h1>
 
-          <p className="mt-2 text-slate-500">
-            1,284 enrolled across 42 classes.
+          <p className="mt-2 text-sm text-slate-500">
+            1,284 enrolled across 42 classes — manage profiles,
+            attendance and academic standing.
           </p>
         </div>
 
-        <button className="rounded-2xl bg-cyan-700 px-6 py-3 font-semibold text-white shadow">
-          + Enroll student
+        <div className="flex items-center gap-3">
+
+          <button className="flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-700 shadow-sm hover:bg-slate-50">
+            <FiDownload />
+            Export
+          </button>
+
+          <button className="flex items-center gap-2 rounded-xl bg-[#0b8ca1] px-4 py-2 text-sm font-semibold text-white hover:bg-[#09788a]">
+            <FiPlus />
+            Enroll student
+          </button>
+        </div>
+      </div>
+
+      {/* SEARCH */}
+      <div className="flex items-center gap-3">
+
+        <div className="flex w-[320px] items-center gap-2 rounded-xl border border-slate-200 bg-white px-3 py-2">
+
+          <FiSearch className="text-slate-400" />
+
+          <input
+            type="text"
+            placeholder="Search by name or ID"
+            className="w-full bg-transparent text-sm outline-none"
+          />
+        </div>
+
+        <button className="flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50">
+          <FiFilter />
+          Filters
         </button>
       </div>
 
-      <div className="overflow-hidden rounded-3xl border border-slate-200 bg-white">
-        <table className="w-full">
-          <thead className="border-b border-slate-200 bg-slate-50 text-left">
-            <tr>
-              <th className="px-6 py-4">Student</th>
-              <th>Grade</th>
-              <th>Guardian</th>
-              <th>Attendance</th>
-              <th>GPA</th>
-              <th>Status</th>
-            </tr>
-          </thead>
+      {/* TABLE */}
+      <div className="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm">
 
-          <tbody>
-            {students.map((student) => (
-              <tr
-                key={student.id}
-                className="border-b border-slate-100"
+        {/* TABLE HEADER */}
+        <div className="grid grid-cols-6 border-b border-slate-200 bg-slate-50 px-6 py-4 text-xs font-semibold uppercase tracking-wide text-slate-500">
+
+          <div>Student</div>
+          <div>Grade</div>
+          <div>Guardian</div>
+          <div>Attendance</div>
+          <div>GPA</div>
+          <div>Status</div>
+        </div>
+
+        {/* ROWS */}
+        {students.map((student) => (
+
+          <div
+            key={student.id}
+            className="grid grid-cols-6 items-center border-b border-slate-100 px-6 py-4 text-sm hover:bg-slate-50"
+          >
+
+            {/* STUDENT */}
+            <div className="flex items-center gap-3">
+
+              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-cyan-100 font-bold text-cyan-700">
+                {student.initials}
+              </div>
+
+              <div>
+                <h4 className="font-semibold text-slate-800">
+                  {student.name}
+                </h4>
+
+                <p className="text-xs text-slate-400">
+                  {student.id}
+                </p>
+              </div>
+            </div>
+
+            {/* GRADE */}
+            <div>
+              <span className="rounded-full border border-slate-200 px-3 py-1 text-xs font-medium">
+                {student.grade}
+              </span>
+            </div>
+
+            {/* GUARDIAN */}
+            <div className="text-slate-600">
+              {student.guardian}
+            </div>
+
+            {/* ATTENDANCE */}
+            <div className="flex items-center gap-3">
+
+              <div className="h-2 w-[90px] overflow-hidden rounded-full bg-slate-200">
+
+                <div
+                  className="h-full rounded-full bg-[#0b8ca1]"
+                  style={{
+                    width: `${student.attendance}%`,
+                  }}
+                />
+              </div>
+
+              <span className="text-xs font-medium text-slate-600">
+                {student.attendance}%
+              </span>
+            </div>
+
+            {/* GPA */}
+            <div className="font-semibold text-slate-700">
+              {student.gpa}
+            </div>
+
+            {/* STATUS */}
+            <div>
+
+              <span
+                className={`rounded-full px-3 py-1 text-xs font-semibold ${
+                  student.status === "Active"
+                    ? "bg-cyan-100 text-cyan-700"
+                    : "bg-orange-100 text-orange-700"
+                }`}
               >
-                <td className="px-6 py-5">
-                  <div>
-                    <h3 className="font-semibold text-slate-900">
-                      {student.name}
-                    </h3>
-
-                    <p className="text-sm text-slate-500">
-                      {student.id}
-                    </p>
-                  </div>
-                </td>
-
-                <td>{student.grade}</td>
-                <td>{student.guardian}</td>
-                <td>{student.attendance}</td>
-                <td>{student.gpa}</td>
-
-                <td>
-                  <span className="rounded-full bg-emerald-100 px-3 py-1 text-sm font-medium text-emerald-700">
-                    {student.status}
-                  </span>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+                {student.status}
+              </span>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   )
